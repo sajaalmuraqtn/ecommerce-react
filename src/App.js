@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js';
 import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './Components/Layout/Layout';
@@ -12,6 +14,8 @@ import Notfound from './Components/NotFound/Notfound';
 import Login from './Components/Login/Login';
 import Cart from './Components/Cart/Cart';
 import jwt from 'jwt-decode';
+import ProtectedRouter from './Components/ProtectedRouter/ProtectedRouter';
+import ProductDetails from './Components/ProductDetails/ProductDetails';
 
 export default function App() {
   
@@ -22,9 +26,7 @@ export default function App() {
     setUser(decoded);
   }
   
-function logout() {
-  
-}
+
 
   useEffect(
   ()=>{
@@ -37,11 +39,12 @@ function logout() {
 
   let router = createBrowserRouter(
     [
-      {path: '', element: <Layout user={user} />, 
+      {path: '', element: <Layout user={user} setUser={setUser} />, 
       children: [
         { index: true, element: <Home /> },
         { path: 'product', element: <Product/> },
-        { path: 'cart', element: <Cart/> },
+        { path: 'product/:id', element: <ProductDetails/> },
+        { path: 'cart', element:<ProtectedRouter><Cart/> </ProtectedRouter> },
         { path: 'login', element: <Login info={saveCurrentUser}/> },
         { path: 'register', element: <Register/> },
         { path: '*', element: <Notfound /> }

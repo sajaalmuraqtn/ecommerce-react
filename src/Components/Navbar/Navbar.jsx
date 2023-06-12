@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Navbar({user}) {
+export default function Navbar({user,logout}) {
   return (
     <><nav className="navbar navbar-expand-lg bg-primary">
     <div className="container-fluid">
@@ -40,7 +40,7 @@ export default function Navbar({user}) {
             
             </>:
           <li className="nav-item">
-            <Link className="nav-link active " aria-current="page" to="login">Logout</Link>
+            <button className="btn btn-danger" aria-current="page" onClick={logout}>Logout</button>
           </li>
 
           }
