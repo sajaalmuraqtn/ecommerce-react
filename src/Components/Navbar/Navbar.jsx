@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { CartContext } from '../Context/CartStore'
 
 export default function Navbar({user,logout}) {
+  let {count}=useContext(CartContext);
   return (
     <><nav className="navbar navbar-expand-lg bg-primary">
     <div className="container-fluid">
@@ -12,7 +14,7 @@ export default function Navbar({user,logout}) {
       <div className="collapse navbar-collapse d-flex justify-content-around" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <Link className="nav-link active" aria-current="page" to="">Home</Link>
+            <Link  className="nav-link active" aria-current="page" to="">Home</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link active" aria-current="page" to="product">Product</Link>
@@ -20,7 +22,9 @@ export default function Navbar({user,logout}) {
           {
             user?
           <li className="nav-item">
-            <Link className="nav-link active" aria-current="page" to="cart">Cart</Link>
+            <Link className="nav-link active" aria-current="page" to="cart">Cart
+             <span className=" p-2 text-white mx-2">{count}</span>
+            </Link>
           </li>
           :
           ''
