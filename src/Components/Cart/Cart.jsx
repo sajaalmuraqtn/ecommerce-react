@@ -7,7 +7,7 @@ export default function Cart() {
   let {getCartContext}=useContext(CartContext);
   let {updateCartContext}=useContext(CartContext);
   let {deleteCartContext}=useContext(CartContext);
-  let [cart,setCart]=useState([])
+  let [cart,setCart]=useState([]);
   async function getCart(){
     let res = await getCartContext();
     if (res.message==='success') {  
@@ -50,7 +50,7 @@ export default function Cart() {
       <th scope="col">After disCount</th>
       <th scope="col">Quantity</th>
       <th scope="col">Final Price</th>
-      <th scope="col">delete</th>
+      <th scope="col">delete </th>
     </tr>
   </thead>
   <tbody>{

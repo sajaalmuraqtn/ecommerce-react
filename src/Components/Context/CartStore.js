@@ -8,7 +8,6 @@ export function CartContextProvider({children}){
   async function addToCartContext(productID){
     try {
 
-
       const token=localStorage.getItem('userToken');
       let objData={productID};
       const {data}= await axios.post(`https://king-prawn-app-3mgea.ondigitalocean.app/cart/add`,objData,{headers:{authorization:`Tariq__${token}`}})
@@ -48,7 +47,7 @@ export function CartContextProvider({children}){
     }
   }
 
-    return <CartContext.Provider value={{addToCartContext,getCartContext,updateCartContext,deleteCartContext,count}}>
+    return <CartContext.Provider value={{addToCartContext,getCartContext,updateCartContext,deleteCartContext,count,setCount}}>
         {children}
     </CartContext.Provider>
 }

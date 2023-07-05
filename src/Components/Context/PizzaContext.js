@@ -3,7 +3,7 @@ import { createContext, useContext } from "react";
 
 
 export const PizzaContext=createContext(null);
-export function PizzaContextProvider({Children}) {
+export function PizzaContextProvider({children}) {
 
     async function getPizzaContext(){
         try {
@@ -15,7 +15,7 @@ export function PizzaContextProvider({Children}) {
         }
     }
       return<PizzaContext.Provider value={{getPizzaContext}}>
-          {Children}
+          {children}
       </PizzaContext.Provider>
     return 
 }
